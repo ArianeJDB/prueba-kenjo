@@ -1,0 +1,4 @@
+<p>albums-list works!</p>
+<div *ngFor="let album of (albums$ | async); let i = index">
+    <div>{{album.title}}</div>
+</div>
