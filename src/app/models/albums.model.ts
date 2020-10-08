@@ -1,4 +1,5 @@
 export interface Albums {
+    _id: string;
     title: string;
     artistId?: string;
     coverUrl: string;

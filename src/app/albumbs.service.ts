@@ -19,6 +19,7 @@ export class AlbumbsService {
         let albums: Albums[] = [];
         albumsDTO.map((albumDTO: AlbumsDTO) => {
           const album: Albums = {
+            _id: albumDTO._id,
             title: albumDTO.title,
             artistId: albumDTO.artistId,
             coverUrl: albumDTO.coverUrl,
