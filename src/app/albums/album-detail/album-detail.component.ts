@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Albums } from 'src/app/models/albums.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-album-detail',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./album-detail.component.scss']
 })
 export class AlbumDetailComponent implements OnInit {
-
-  constructor() { }
+  albums: Albums[];
+  albumSelected: Albums[];
+  albumData: {};
+  id: string;
+  constructor( private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.albums = JSON.parse(localStorage.getItem('albums'));
+    this.id = this.activatedRoute.snapshot.params.id;
+    this.filterAlbum()
   }
 
+  filterAlbum() {
+    this.albumSelected = this.albums.filter(album => album._id === this.id);
+
+  }
 }

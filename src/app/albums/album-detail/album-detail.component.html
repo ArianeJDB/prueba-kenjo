@@ -1,1 +1,9 @@
-<p>album-detail works!</p>
+<div *ngFor="let data of albumSelected">
+    <img [src]="data.coverUrl" alt="">
+    <h1>{{ data.title }}</h1>
+    <span>{{data.genre}}</span>
+    <span>{{data.year}}</span>
+    <div>Artist: {{ data.artistId}}</div>
+    <a href="albums/edit/{{data._id}}">Editar este album</a>
+    <button>Borrar este Album</button>
+</div>

@@ -1,5 +1,5 @@
 <p>albums-list works!</p>
-<ul *ngFor="let album of (albums$ | async); let i = index">
+<ul *ngFor="let album of albums; let i = index">
     <li (click)=goToDetail(album._id)>
         <img [src]="album.coverUrl" alt="cover of {{album.title}} album">
         <p>{{album.title}}</p>
