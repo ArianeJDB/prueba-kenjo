@@ -1,1 +1,41 @@
-<p>create-album works!</p>
+<h2>Create your own album!</h2>
+
+<form class="form_container"[formGroup]="form">
+    <div class="field_container">
+      <label for="title" class="hidden">Title</label>
+      <input
+        type="text"
+        id="titrle"
+        formControlName="title"
+        placeholder="Title" />
+    </div>
+
+
+    <div class="field_container">
+      <label for="coverUrl" class="hidden">Cover Url</label>
+      <input
+        type="coverUrl"
+        id="coverUrl"
+        formControlName="coverUrl"
+        placeholder="Cover Url" />
+    </div>
+
+    <div class="field_container">
+        <label for="year" class="hidden">Year</label>
+        <input
+          type="year"
+          id="year"
+          formControlName="year"
+          placeholder="year" />
+      </div>
+
+      <div class="field_container">
+        <label for="genre" class="hidden">Genre</label>
+        <input
+          type="genre"
+          id="genre"
+          formControlName="genre"
+          placeholder="genre" />
+      </div>
+    <button class="btn" type="button" label="Create" (click)="createNewAlbum()">Create</button>
+  </form>

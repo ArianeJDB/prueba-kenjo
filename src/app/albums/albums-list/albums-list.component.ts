@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { AlbumbsService } from 'src/app/albumbs.service';
+import { AlbumsService } from 'src/app/albums.service';
 import { Albums } from 'src/app/models/albums.model';
 
 @Component({
@@ -16,7 +16,7 @@ export class AlbumsListComponent implements OnInit, OnDestroy {
   sub: Subscription;
 
   constructor(
-    private service: AlbumbsService,
+    private service: AlbumsService,
     private router: Router
   ) { }
 

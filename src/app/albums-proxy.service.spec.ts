@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AlbumbsProxyService } from './albumbs-proxy.service';
+import { AlbumsProxyService } from './albums-proxy.service';
 
-describe('AlbumbsProxyService', () => {
-  let service: AlbumbsProxyService;
+describe('AlbumsProxyService', () => {
+  let service: AlbumsProxyService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AlbumbsProxyService);
+    service = TestBed.inject(AlbumsProxyService);
   });
 
   it('should be created', () => {

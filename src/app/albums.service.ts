@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/internal/operators';
-import { AlbumbsProxyService } from './albumbs-proxy.service';
+import { AlbumsProxyService } from './albums-proxy.service';
 import { Albums } from './models/albums.model';
 import { AlbumsDTO } from './models/albums-dto.model';
 
@@ -9,9 +9,9 @@ import { AlbumsDTO } from './models/albums-dto.model';
 @Injectable({
   providedIn: 'root'
 })
-export class AlbumbsService {
+export class AlbumsService {
 
-  constructor(private proxy: AlbumbsProxyService) { }
+  constructor(private proxy: AlbumsProxyService) { }
 
   getAlbums(): Observable<Albums[]> {
     return this.proxy.getAlbumsList().pipe(
@@ -32,5 +32,15 @@ export class AlbumbsService {
       })
     );
   }
+
+  createNewAlbum(payload): Observable<Albums> {
+    return this.proxy.createNewAlbum(payload).pipe(
+      map((albums: Albums) => {
+        const albumsList: Albums = albums;
+        return albumsList;
+      })
+    );
+  }
+
 }
 

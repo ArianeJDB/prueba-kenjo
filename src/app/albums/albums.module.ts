@@ -6,6 +6,7 @@ import { EditAlbumComponent } from './edit-album/edit-album.component';
 import { AlbumDetailComponent } from './album-detail/album-detail.component';
 import { AlbumsListComponent } from './albums-list/albums-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const ROUTES: Routes = [
   {
@@ -32,6 +33,7 @@ const ROUTES: Routes = [
   imports: [
     CommonModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forChild(ROUTES)
   ]
 })

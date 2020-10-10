@@ -6,14 +6,19 @@ import { Albums } from './models/albums.model';
 @Injectable({
   providedIn: 'root'
 })
-export class AlbumbsProxyService {
+export class AlbumsProxyService {
 
   constructor(private httpClient: HttpClient) { }
-  config = 'http://localhost:3000/'
+  config = 'http://localhost:3000/';
 
 
 getAlbumsList(): Observable<Albums[]> {
   return this.httpClient.get<Albums[]>(this.config + 'albums/all');
 }
-}
 
+createNewAlbum(payload): Observable<Albums> {
+  console.log('proxy', payload)
+  return this.httpClient.post<Albums>(this.config + 'album', payload);
+
+}
+}

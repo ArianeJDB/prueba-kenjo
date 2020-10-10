@@ -1,0 +1,40 @@
+header {
+    background-color: rgb(20, 20, 20);
+    border-bottom: rgb(253, 4, 199) solid 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    height: 90px;
+    padding: 0 20px;
+}
+img {
+  width: 70px;
+}
+
+.fa-guitar {
+    color: rgb(253, 4, 199);
+    font-size: 60px;
+}
+
+.fa-record-vinyl {
+    color: rgb(253, 4, 199);
+    font-size: 25px;
+}
+
+.fa-music {
+    color: rgb(253, 4, 199);
+    font-size: 25px;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+
+}
+
+.icons-container {
+    display:flex
+}
