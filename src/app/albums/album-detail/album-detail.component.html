@@ -5,6 +5,5 @@
     <span>{{data.year}}</span>
     <div>Artist: {{ data.artistId}}</div>
     <a href="albums/edit/{{data._id}}">Editar este album</a>
-    <!-- <div (click)="gotToEditAlbum(data._id)">Edit this album</div> -->
-    <button>Borrar este Album</button>
+    <button (click)="deleteAlbum(data._id)">Borrar este Album</button>
 </div>

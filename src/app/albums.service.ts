@@ -35,8 +35,8 @@ export class AlbumsService {
 
   createNewAlbum(payload): Observable<Albums> {
     return this.proxy.createNewAlbum(payload).pipe(
-      map((albums: Albums) => {
-        const albumsList: Albums = albums;
+      map((album: Albums) => {
+        const albumsList: Albums = album;
         return albumsList;
       })
     );
@@ -44,11 +44,20 @@ export class AlbumsService {
 
   editAlbum(id, payload): Observable<Albums> {
     return this.proxy.editAlbum(id, payload).pipe(
-      map((albums: Albums) => {
-        const albumUpdated: Albums = albums;
+      map((album: Albums) => {
+        const albumUpdated: Albums = album;
         return albumUpdated;
       })
     )
+  }
+
+  deleteAlbum(id): Observable<Albums> {
+    return this.proxy.deleteAlbum(id).pipe(
+      map((album: Albums) => {
+        const albumDeleted: Albums = album;
+        return albumDeleted;
+      })
+    );
   }
 }
 

@@ -23,4 +23,8 @@ createNewAlbum(payload): Observable<Albums> {
 editAlbum(id, payload): Observable<Albums> {
   return this.httpClient.put<Albums>(this.config + 'album/' + id, payload)
 }
+
+deleteAlbum(id): Observable<Albums> {
+  return this.httpClient.delete<Albums>(this.config + 'album/' + id)
+}
 }

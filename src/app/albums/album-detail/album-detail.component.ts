@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Albums } from 'src/app/models/albums.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { AlbumsService } from 'src/app/albums.service';
 
 @Component({
   selector: 'app-album-detail',
@@ -14,6 +15,7 @@ export class AlbumDetailComponent implements OnInit {
   id: string;
   constructor(
     private activatedRoute: ActivatedRoute,
+    private service: AlbumsService,
     private router: Router
   ) { }
 
@@ -28,7 +30,11 @@ export class AlbumDetailComponent implements OnInit {
 
   }
 
-  // gotToEditAlbum(id) {
-  //   this.router.navigate(['albums/edit/' + id]);
-  // }
+  deleteAlbum(id) {
+    this.service.deleteAlbum(id).subscribe(
+      (response) => response,
+      (error) => console.log(error)
+    )
+    this.router.navigate(['/albums']);
+  }
 }
