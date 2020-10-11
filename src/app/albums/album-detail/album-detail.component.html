@@ -1,9 +1,8 @@
 <div *ngFor="let data of albumSelected" class="album">
     <img [src]="data.coverUrl" alt="">
-    <h2>{{ data.title }}</h2>
+    <h2>{{ data.title }} / <span (click)="goToArtist()" class="artist">{{artistName}}</span></h2>
     <span>{{data.year}}</span>
     <span>{{data.genre}}</span>
-
     <div class="icons-container">
         <div class="icon-container edit" (click)="goToEdit(data._id)">
             <i class="fas fa-undo"></i>

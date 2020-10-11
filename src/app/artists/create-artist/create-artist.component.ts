@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { NotificationBusService } from 'src/app/notification-bus.service';
   templateUrl: './create-artist.component.html',
   styleUrls: ['./create-artist.component.scss']
 })
-export class CreateArtistComponent implements OnInit {
+export class CreateArtistComponent implements OnInit, OnDestroy {
   @Input() idToEdit: string;
   @Input() nameToEdit: string;
   @Input() photoUrlToEdit: string;
@@ -73,6 +73,10 @@ export class CreateArtistComponent implements OnInit {
 
   setPage() {
     this.nameToEdit ? this.page = 'Edit' : this.page = 'Create';
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
 }

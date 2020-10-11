@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { ArtistsService } from 'src/app/artists.service';
@@ -9,7 +9,7 @@ import { Artists } from 'src/app/models/artists.model';
   templateUrl: './artists-list.component.html',
   styleUrls: ['./artists-list.component.scss']
 })
-export class ArtistsListComponent implements OnInit {
+export class ArtistsListComponent implements OnInit, OnDestroy {
   artists$: Observable<Artists[]>;
   artists: Artists[];
   sub: Subscription;
@@ -31,5 +31,9 @@ export class ArtistsListComponent implements OnInit {
   }
   goToDetail(id): any {
     this.router.navigate(['artists/detail/' + id]);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
