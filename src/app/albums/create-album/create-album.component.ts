@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AlbumsService } from 'src/app/albums.service';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { Albums } from 'src/app/models/albums.model';
+import { NotificationBusService } from 'src/app/notification-bus.service';
 
 @Component({
   selector: 'app-create-album',
@@ -31,7 +33,11 @@ export class CreateAlbumComponent implements OnInit, OnDestroy {
   page: string;
   sub: Subscription;
 
-  constructor(private service: AlbumsService) { }
+  constructor(
+    private service: AlbumsService,
+    private router: Router,
+    private busService: NotificationBusService
+    ) { }
 
   ngOnInit(): void {
     this.setPage()
@@ -46,21 +52,28 @@ export class CreateAlbumComponent implements OnInit, OnDestroy {
 
   createNewAlbum() {
 
-    if (this.form.valid) {
-      this.service.createNewAlbum(this.form.value).subscribe(
-        response => this.newAlbum = response,
-        error => console.log(error)
-        );
+    try {
+      if (this.form.valid) {
+        this.service.createNewAlbum(this.form.value).subscribe(
+          response => this.newAlbum = response,
+          error => console.log(error)
+          );
+      }
+      this.successMsg = 'The album was created! =)';
+      this.busService.showSuccess(this.successMsg, this.successMsg);
+      this.router.navigate(['/albums']);
+    } catch (error) {
+      if (error.status === 500) {
+        this.errorMsg = 'Oops! server error!';
+        this.busService.showError(this.errorMsg, this.errorMsg);
+      } else if (error.status === 400) {
+        this.errorMsg = 'Oops! you must fill all fields!';
+        this.busService.showError(this.errorMsg, this.errorMsg);
+      }
     }
-    // this.successMsg = 'Bienvenido =)';
-    // this.busService.showSuccess(this.successMsg, this.successMsg);
-    // this.router.navigate(['users/user-list']);
   }
   setPage() {
-    console.log('ppp', this.titleToEdit)
     this.titleToEdit ? this.page = 'Edit' : this.page = 'Create';
-    console.log('ppp', this.page)
- 
   }
 
   editAlbum() {
@@ -68,6 +81,6 @@ export class CreateAlbumComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    // this.sub.unsubscribe();
   }
 }

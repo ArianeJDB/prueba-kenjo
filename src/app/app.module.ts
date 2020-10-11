@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 const ROUTES: Routes = [
   { path: '', redirectTo: '/albums', pathMatch: 'full' },
@@ -21,6 +24,8 @@ const ROUTES: Routes = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ToastModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [],
