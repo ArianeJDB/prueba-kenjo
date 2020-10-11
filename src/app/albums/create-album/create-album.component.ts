@@ -43,7 +43,7 @@ export class CreateAlbumComponent implements OnInit, OnDestroy {
     this.form = new FormGroup({
       title: new FormControl(this.titleToEdit || '', [Validators.required]),
       coverUrl: new FormControl(this.coverUrlToEdit || '', [Validators.required]),
-      year: new FormControl(this.yearToEdit || null, [Validators.required]),
+      year: new FormControl(this.yearToEdit || null, [Validators.required, Validators.max(2020)]),
       genre: new FormControl(this.genreToEdit || '', [Validators.required]),
       artistId: new FormControl(this.artistIdToEdit || null)
     });
