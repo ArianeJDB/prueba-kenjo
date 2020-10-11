@@ -1,9 +1,17 @@
-<div *ngFor="let data of albumSelected">
+<div *ngFor="let data of albumSelected" class="album">
     <img [src]="data.coverUrl" alt="">
-    <h1>{{ data.title }}</h1>
-    <span>{{data.genre}}</span>
+    <h2>{{ data.title }}</h2>
     <span>{{data.year}}</span>
-    <div>Artist: {{ data.artistId}}</div>
-    <a href="albums/edit/{{data._id}}">Editar este album</a>
-    <button (click)="deleteAlbum(data._id)">Borrar este Album</button>
+    <span>{{data.genre}}</span>
+
+    <div class="icons-container">
+        <div class="icon-container edit" (click)="goToEdit(data._id)">
+            <i class="fas fa-undo"></i>
+            <span>Edit</span>
+        </div>
+        <div class="icon-container delete" (click)="deleteAlbum(data._id)">
+            <i class="fas fa-skull-crossbones"></i>
+            <span>Delete</span>
+        </div>
+    </div>
 </div>
