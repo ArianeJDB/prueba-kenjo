@@ -86,7 +86,7 @@ export class AlbumDetailComponent implements OnInit, OnDestroy {
     this.router.navigate(['artists/detail/' + this.artistId]);
   }
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    // this.sub.unsubscribe();
   }
 }
 
