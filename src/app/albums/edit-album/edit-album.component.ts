@@ -39,7 +39,7 @@ export class EditAlbumComponent implements OnInit, OnDestroy {
 
   filterAlbum() {
     this.albumToEdit = this.albums.filter(album => album._id === this.id);
-    this.getAlbumData()
+    this.getAlbumData();
   }
 
   getAlbumData() {
@@ -50,7 +50,7 @@ export class EditAlbumComponent implements OnInit, OnDestroy {
       this.year = album.year;
       this.genre = album.genre;
       this.artistId = album.artistId;
-    })
+    });
   }
 
   editAlbum(payload: Albums) {

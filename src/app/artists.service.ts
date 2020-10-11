@@ -12,7 +12,7 @@ export class ArtistsService {
 
   constructor(private proxy: ArtistsProxyService) { }
 
-  getAlbums(): Observable<Artists[]> {
+  getArtists(): Observable<Artists[]> {
     return this.proxy.getArtistsList().pipe(
       map((artistsDTO: ArtistsDTO[]) => {
         let artists: Artists[] = [];
@@ -56,7 +56,7 @@ export class ArtistsService {
     );
   }
 
-  deleteAlbum(id): Observable<Artists> {
+  deleteArtist(id): Observable<Artists> {
     return this.proxy.deleteArtist(id).pipe(
       map((artist: Artists) => {
         const artistDeleted: Artists = artist;

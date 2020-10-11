@@ -1,1 +1,7 @@
-<p>edit-artist works!</p>
+<app-create-artist
+    [nameToEdit]='name'
+    [photoUrlToEdit]='photoUrl'
+    [birthdateToEdit]='birthdate'
+    [deathDateToEdit]='deathDate'
+    (sendToEdit)='editArtist($event)'
+></app-create-artist>

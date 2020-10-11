@@ -13,7 +13,6 @@ import { NotificationBusService } from 'src/app/notification-bus.service';
 export class AlbumDetailComponent implements OnInit, OnDestroy {
   albums: Albums[];
   albumSelected: Albums[];
-  albumData: {};
   id: string;
   sub: Subscription;
   errorMsg: string;

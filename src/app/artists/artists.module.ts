@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ArtistDetailComponent } from './artist-detail/artist-detail.component';
 import { ArtistsListComponent } from './artists-list/artists-list.component';
-import { CreateListComponent } from './create-list/create-list.component';
 import { EditArtistComponent } from './edit-artist/edit-artist.component';
+import { CreateArtistComponent } from './create-artist/create-artist.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const ROUTES: Routes = [
   {
@@ -14,7 +16,7 @@ const ROUTES: Routes = [
     path: 'detail/:id', component: ArtistDetailComponent
   },
   {
-    path: 'create-artist', component: CreateListComponent
+    path: 'create-artist', component: CreateArtistComponent
   },
   {
     path: 'edit/:id', component: EditArtistComponent
@@ -22,9 +24,11 @@ const ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [ArtistDetailComponent, ArtistsListComponent, CreateListComponent, EditArtistComponent],
+  declarations: [ArtistDetailComponent, ArtistsListComponent, EditArtistComponent, CreateArtistComponent],
   imports: [
     CommonModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forChild(ROUTES)
   ]
 })

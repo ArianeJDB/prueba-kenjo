@@ -20,7 +20,16 @@ export class ArtistsListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.artists$ = this.service.g
+    this.artists$ = this.service.getArtists();
+    this.sub = this.artists$.subscribe(
+      (response) => {
+        this.artists = response;
+        localStorage.setItem('artists', JSON.stringify(response));
+      },
+      (error) => console.log(error)
+    );
   }
-
+  goToDetail(id): any {
+    this.router.navigate(['artists/detail/' + id]);
+  }
 }

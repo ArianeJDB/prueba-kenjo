@@ -1,0 +1,32 @@
+
+<section>
+    <h2 *ngIf="page === 'Create'">Create an artist!</h2>
+    <h2 *ngIf="page === 'Edit'">Edit this artist</h2>
+    <form class="form_container" [formGroup]="form">
+      <div class="field_container">
+        <label for="name" class="hidden">-Name</label>
+        <input type="text" id="name" formControlName="name" placeholder="Name" />
+      </div>
+  
+  
+      <div class="field_container">
+        <label for="photoUrl" class="hidden">Photo Url</label>
+        <input type="text" id="photoUrl" formControlName="photoUrl" placeholder="Photo Url" />
+      </div>
+  
+      <div class="field_container">
+        <label for="birthdate" class="hidden">Birthdate</label>
+        <input type="date" id="birthdate" formControlName="birthdate" placeholder="Birthdate" />
+      </div>
+  
+      <div class="field_container">
+        <label for="deathDate" class="hidden">Death Date</label>
+        <input type="date" id="deathDate" formControlName="deathDate" placeholder="Death Date" />
+        <p>Don't fill it if they're still alive, of course</p>
+      </div>
+      <button *ngIf="page === 'Create'" [disabled]="!form.valid" class="btn" type="button" label="Create"
+        (click)="createNewArtist()">Create</button>
+      <button *ngIf="page === 'Edit'" [disabled]="!form.valid" class="btn" type="button" label="Edit"
+        (click)="editArtist()">Edit</button>
+    </form>
+  </section>
