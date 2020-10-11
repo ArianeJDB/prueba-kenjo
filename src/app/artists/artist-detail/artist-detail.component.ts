@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ArtistsService } from 'src/app/artists.service';
@@ -10,7 +10,7 @@ import { NotificationBusService } from 'src/app/notification-bus.service';
   templateUrl: './artist-detail.component.html',
   styleUrls: ['./artist-detail.component.scss']
 })
-export class ArtistDetailComponent implements OnInit {
+export class ArtistDetailComponent implements OnInit, OnDestroy {
   artists: Artists[];
   artistSelected: Artists[];
   id: string;
@@ -62,5 +62,9 @@ export class ArtistDetailComponent implements OnInit {
 
   goToEdit(id) {
     this.router.navigate(['artists/edit/' + id]);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe()
   }
 }

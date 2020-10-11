@@ -35,7 +35,7 @@ export class AlbumDetailComponent implements OnInit, OnDestroy {
     this.id = this.activatedRoute.snapshot.params.id;
     this.filterAlbum();
     // this.getAlbumById(this.id)
-    this.getArtistName()
+    this.getArtistName();
 
   }
 
@@ -73,7 +73,6 @@ export class AlbumDetailComponent implements OnInit, OnDestroy {
   getArtistName() {
     this.albumSelected.forEach(album => {
       if (album.artistId) {
-        console.log('??', album.artistId)
         this.artistService.getArtistById(album.artistId).subscribe(
           (response) => {
             this.artistName = response.name;
@@ -87,7 +86,7 @@ export class AlbumDetailComponent implements OnInit, OnDestroy {
     this.router.navigate(['artists/detail/' + this.artistId]);
   }
   ngOnDestroy() {
-    // this.sub.unsubscribe();
+    this.sub.unsubscribe();
   }
 }
 

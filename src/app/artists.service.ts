@@ -31,7 +31,6 @@ export class ArtistsService {
     );
   }
   getArtistById(id): Observable<Artists> {
-    console.log('get artist by id service')
     return this.proxy.getArtistById(id).pipe(
       map((artist: Artists) => {
         const newArtist: Artists = artist;

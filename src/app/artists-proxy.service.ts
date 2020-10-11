@@ -15,8 +15,6 @@ export class ArtistsProxyService {
     return this.httpClient.get<Artists[]>(this.config + 'artists/all');
   }
   getArtistById(id): Observable<Artists> {
-    console.log('PROXYYYget artist by id service', id)
-
     return this.httpClient.get<Artists>(this.config + 'artist/' + id);
   }
   createNewArtist(payload): Observable<Artists> {

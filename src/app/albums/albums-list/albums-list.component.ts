@@ -18,7 +18,7 @@ export class AlbumsListComponent implements OnInit, OnDestroy {
   sub: Subscription;
   artistData: Artists;
   artistName: string;
-  
+
   constructor(
     private service: AlbumsService,
     private router: Router,
@@ -40,18 +40,7 @@ export class AlbumsListComponent implements OnInit, OnDestroy {
   goToDetail(id): any {
     this.router.navigate(['albums/detail/' + id]);
   }
-  // getArtistName() {
-  //   this.albumSelected.forEach(album => {
-  //     if (album.artistId) {
-  //       console.log('??', album.artistId)
-  //       this.artistService.getArtistById(album.artistId).subscribe(
-  //         (response) => {
-  //           this.artistName = response.name;
-  //         },
-  //         (error) => console.log(error));
-  //     }
-  //   });
-  // }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
   } 

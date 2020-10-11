@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ArtistsService } from 'src/app/artists.service';
@@ -10,7 +10,7 @@ import { NotificationBusService } from 'src/app/notification-bus.service';
   templateUrl: './edit-artist.component.html',
   styleUrls: ['./edit-artist.component.scss']
 })
-export class EditArtistComponent implements OnInit {
+export class EditArtistComponent implements OnInit, OnDestroy {
   id: string;
   name: string;
   photoUrl: string;
@@ -69,5 +69,9 @@ export class EditArtistComponent implements OnInit {
         this.busService.showError(this.errorMsg, this.errorMsg);
       }
     }
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe()
   }
 }
