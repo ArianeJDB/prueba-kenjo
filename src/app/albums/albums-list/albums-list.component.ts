@@ -33,7 +33,7 @@ export class AlbumsListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
-    }
+  }
 
 
 

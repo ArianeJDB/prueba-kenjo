@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AlbumsService } from 'src/app/albums.service';
 import { Albums } from 'src/app/models/albums.model';
 
@@ -8,7 +9,7 @@ import { Albums } from 'src/app/models/albums.model';
   templateUrl: './edit-album.component.html',
   styleUrls: ['./edit-album.component.scss']
 })
-export class EditAlbumComponent implements OnInit {
+export class EditAlbumComponent implements OnInit, OnDestroy {
   title: string;
   coverUrl: string;
   year: number;
@@ -18,7 +19,7 @@ export class EditAlbumComponent implements OnInit {
   albums: Albums[];
   albumToEdit: Albums[];
   albumUpdated: Albums;
-
+  sub: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -58,5 +59,9 @@ export class EditAlbumComponent implements OnInit {
       (response) => this.albumUpdated = response,
       (error) => console.log(error)
     )
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }

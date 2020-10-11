@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { AlbumsService } from 'src/app/albums.service';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { Albums } from 'src/app/models/albums.model';
@@ -9,7 +10,7 @@ import { Albums } from 'src/app/models/albums.model';
   templateUrl: './create-album.component.html',
   styleUrls: ['./create-album.component.scss']
 })
-export class CreateAlbumComponent implements OnInit {
+export class CreateAlbumComponent implements OnInit, OnDestroy {
   @Input() idToEdit: string;
   @Input() titleToEdit: string;
   @Input() coverUrlToEdit: string;
@@ -28,6 +29,7 @@ export class CreateAlbumComponent implements OnInit {
   successMsg: string;
   newAlbum: Albums;
   page: string;
+  sub: Subscription;
 
   constructor(private service: AlbumsService) { }
 
@@ -63,5 +65,9 @@ export class CreateAlbumComponent implements OnInit {
 
   editAlbum() {
     this.sendToEdit.emit(this.form.value)
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
