@@ -1,0 +1,23 @@
+<header>
+
+    <a href="/"><i class="fas fa-guitar"></i></a>
+    <div class="title-tabs">
+        <h1>Good music only!</h1>
+        <span class="tab" (click)="goToPage('albums')">
+            Albums
+        </span>
+        <span class="tab" (click)="goToPage('artists')">
+            Artists
+        </span>
+    </div>
+    <div class="icons-container">
+        <div class="icon-container" (click)="goToPage('artists/create-artist')">
+            <i class="fas fa-music" title="Add an artist"></i>
+            <span>Add an artist</span>
+        </div>
+        <div class="icon-container" (click)="goToPage('albums/create-album')">
+            <i class="fas fa-record-vinyl" title="Add an album"></i>
+            <span>Add an album</span>
+        </div>
+    </div>
+</header>

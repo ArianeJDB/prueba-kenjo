@@ -1,0 +1,43 @@
+.hidden {
+    display: none;
+}
+
+h2 {
+    margin-top: 150px
+
+}
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    margin-bottom: 20px;
+    height: 20px;
+    width: 300px;
+    border-radius: 7px;
+    border: none;
+    padding: 10px
+}
+
+form {
+    text-align: center;
+}
+
+button {
+    border-radius: 7px;
+    padding: 15px;
+    width: 130px;
+    margin-top: 20px;
+    &:not([disabled]) {
+        box-shadow: 0px 0px 20px 0px rgba(253,4,199,1);
+    }
+    
+}
+
+p {
+    margin-top: 0;
+    color: rgba(253,4,199,1);
+}

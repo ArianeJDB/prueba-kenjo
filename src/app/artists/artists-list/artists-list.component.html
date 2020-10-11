@@ -1,0 +1,11 @@
+
+<ul>
+    <li *ngFor="let artist of artists; let i = index">
+        <div class="artist" (click)=goToDetail(artist._id)>
+            <img [src]="artist.photoUrl" alt="pic of {{artist.name}}">
+            <h2>{{artist.name}}</h2>
+            <span>{{artist.birthdate | date}}</span>
+            <span>{{artist.deathDate}}</span>
+        </div>
+    </li>
+</ul>

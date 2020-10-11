@@ -1,0 +1,34 @@
+<section>
+  <h2 *ngIf="page === 'Create'">Create your own album!</h2>
+  <h2 *ngIf="page === 'Edit'">Edit this album</h2>
+  <form class="form_container" [formGroup]="form">
+    <div class="field_container">
+      <label for="title" class="hidden">Title</label>
+      <input type="text" id="titrle" formControlName="title" placeholder="Title" />
+    </div>
+
+
+    <div class="field_container">
+      <label for="coverUrl" class="hidden">Cover Url</label>
+      <input type="coverUrl" id="coverUrl" formControlName="coverUrl" placeholder="Cover Url" />
+    </div>
+
+    <div class="field_container">
+      <label for="year" class="hidden">Year</label>
+      <input type="year" id="year" formControlName="year" placeholder="Year" />
+    </div>
+
+    <div class="field_container">
+      <label for="genre" class="hidden">Genre</label>
+      <input type="genre" id="genre" formControlName="genre" placeholder="Genre" />
+    </div>
+    <div class="field_container">
+      <label for="artistId" class="hidden">Artist Id</label>
+      <input type="text" id="artistId" formControlName="artistId" placeholder="Artist Id" />
+    </div>
+    <button *ngIf="page === 'Create'" [disabled]="!form.valid" class="btn" type="button" label="Create"
+      (click)="createNewAlbum()">Create</button>
+    <button *ngIf="page === 'Edit'" [disabled]="!form.valid" class="btn" type="button" label="Edit"
+      (click)="editAlbum()">Edit</button>
+  </form>
+</section>
