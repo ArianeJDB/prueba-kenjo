@@ -1,10 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { AlbumsService } from 'src/app/albums.service';
-import { ArtistsService } from 'src/app/artists.service';
+import { AlbumsService } from 'src/app/services/albums.service';
 import { Albums } from 'src/app/models/albums.model';
-import { Artists } from 'src/app/models/artists.model';
 
 @Component({
   selector: 'app-albums-list',
@@ -16,14 +14,10 @@ export class AlbumsListComponent implements OnInit, OnDestroy {
   albums$: Observable<Albums[]>;
   albums: Albums[];
   sub: Subscription;
-  artistData: Artists;
-  artistName: string;
 
   constructor(
     private service: AlbumsService,
-    private router: Router,
-    private artistService: ArtistsService
-
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,7 +29,6 @@ export class AlbumsListComponent implements OnInit, OnDestroy {
       },
       (error) => console.log(error)
     );
-
   }
   goToDetail(id): any {
     this.router.navigate(['albums/detail/' + id]);

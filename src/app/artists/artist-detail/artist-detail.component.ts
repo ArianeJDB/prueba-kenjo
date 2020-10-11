@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ArtistsService } from 'src/app/artists.service';
+import { ArtistsService } from 'src/app/services/artists.service';
 import { Artists } from 'src/app/models/artists.model';
-import { NotificationBusService } from 'src/app/notification-bus.service';
+import { NotificationBusService } from 'src/app/services/notification-bus.service';
 
 @Component({
   selector: 'app-artist-detail',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
-import { Notification } from './notification';
+import { Notification } from '../models/notification';
 @Injectable({
   providedIn: 'root'
 })

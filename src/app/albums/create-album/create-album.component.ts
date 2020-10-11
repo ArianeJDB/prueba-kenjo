@@ -2,9 +2,9 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AlbumsService } from 'src/app/albums.service';
+import { AlbumsService } from 'src/app/services/albums.service';
 import { Albums } from 'src/app/models/albums.model';
-import { NotificationBusService } from 'src/app/notification-bus.service';
+import { NotificationBusService } from 'src/app/services/notification-bus.service';
 
 @Component({
   selector: 'app-create-album',

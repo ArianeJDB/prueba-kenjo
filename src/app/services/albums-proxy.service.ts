@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AlbumsDTO } from './models/albums-dto.model';
-import { Albums } from './models/albums.model';
+import { Albums } from '../models/albums.model';
 @Injectable({
   providedIn: 'root'
 })
