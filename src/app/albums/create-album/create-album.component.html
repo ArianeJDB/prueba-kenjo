@@ -37,5 +37,7 @@
           formControlName="genre"
           placeholder="genre" />
       </div>
-    <button class="btn" type="button" label="Create" (click)="createNewAlbum()">Create</button>
+    <button *ngIf="page === 'Create'" [disabled]="!form.valid" class="btn" type="button" label="Create" (click)="createNewAlbum()">Create</button>
+    <button *ngIf="page === 'Edit'" [disabled]="!form.valid" class="btn" type="button" label="Edit" (click)="editAlbum()">Create</button>
+
   </form>

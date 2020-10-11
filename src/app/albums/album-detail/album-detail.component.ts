@@ -12,7 +12,10 @@ export class AlbumDetailComponent implements OnInit {
   albumSelected: Albums[];
   albumData: {};
   id: string;
-  constructor( private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.albums = JSON.parse(localStorage.getItem('albums'));
@@ -24,4 +27,8 @@ export class AlbumDetailComponent implements OnInit {
     this.albumSelected = this.albums.filter(album => album._id === this.id);
 
   }
+
+  // gotToEditAlbum(id) {
+  //   this.router.navigate(['albums/edit/' + id]);
+  // }
 }
