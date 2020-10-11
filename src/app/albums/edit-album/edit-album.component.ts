@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AlbumsService } from 'src/app/albums.service';
 import { Albums } from 'src/app/models/albums.model';
 
 @Component({
@@ -16,9 +17,13 @@ export class EditAlbumComponent implements OnInit {
   id: string;
   albums: Albums[];
   albumToEdit: Albums[];
+  albumUpdated: Albums;
 
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private service: AlbumsService
+    ) { }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params.id;
@@ -45,7 +50,13 @@ export class EditAlbumComponent implements OnInit {
     })
   }
 
-  editAlbum(hola) {
-    console.log('nose', hola)
+  editAlbum(payload: Albums) {
+    console.log('edit', payload)
+    console.log('edit', this.id)
+
+    this.service.editAlbum(this.id, payload).subscribe(
+      (response) => this.albumUpdated = response,
+      (error) => console.log(error)
+    )
   }
 }

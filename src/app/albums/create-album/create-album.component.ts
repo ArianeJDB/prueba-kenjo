@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlbumsService } from 'src/app/albums.service';
 import { AppRoutingModule } from 'src/app/app-routing.module';
@@ -16,6 +16,7 @@ export class CreateAlbumComponent implements OnInit {
   @Input() yearToEdit: string;
   @Input() genreToEdit: string;
   @Input() artistIdToEdit: string;
+  @Output() sendToEdit: EventEmitter<any> = new EventEmitter();
 
   form: FormGroup;
   title: string;
@@ -31,7 +32,7 @@ export class CreateAlbumComponent implements OnInit {
   constructor(private service: AlbumsService) { }
 
   ngOnInit(): void {
-    console.log('p', this.titleToEdit)
+    this.setPage()
     this.form = new FormGroup({
       title: new FormControl(this.titleToEdit || '', [Validators.required]),
       coverUrl: new FormControl(this.coverUrlToEdit || '', [Validators.required]),
@@ -54,6 +55,13 @@ export class CreateAlbumComponent implements OnInit {
     // this.router.navigate(['users/user-list']);
   }
   setPage() {
-    this.idToEdit ? this.page = 'Edit' : this.page = 'Create'
+    console.log('ppp', this.titleToEdit)
+    this.titleToEdit ? this.page = 'Edit' : this.page = 'Create';
+    console.log('ppp', this.page)
+ 
+  }
+
+  editAlbum() {
+    this.sendToEdit.emit(this.form.value)
   }
 }

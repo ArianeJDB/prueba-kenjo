@@ -42,5 +42,13 @@ export class AlbumsService {
     );
   }
 
+  editAlbum(id, payload): Observable<Albums> {
+    return this.proxy.editAlbum(id, payload).pipe(
+      map((albums: Albums) => {
+        const albumUpdated: Albums = albums;
+        return albumUpdated;
+      })
+    )
+  }
 }
 

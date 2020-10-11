@@ -17,8 +17,10 @@ getAlbumsList(): Observable<Albums[]> {
 }
 
 createNewAlbum(payload): Observable<Albums> {
-  console.log('proxy', payload)
   return this.httpClient.post<Albums>(this.config + 'album', payload);
+}
 
+editAlbum(id, payload): Observable<Albums> {
+  return this.httpClient.put<Albums>(this.config + 'album/' + id, payload)
 }
 }
