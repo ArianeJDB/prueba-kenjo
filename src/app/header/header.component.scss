@@ -4,20 +4,20 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #fff;
+    color: #b3b3b3;
     height: 90px;
-    padding: 0 20px;
     position: fixed;
     top: 0;
-    width: 98%;
-}
-img {
-  width: 70px;
+    width: 100%;
 }
 
+h1 {
+    margin-left: 90px
+}
 .fa-guitar {
     color: rgb(253, 4, 199);
     font-size: 60px;
+    margin-left: 20px
 }
 
 .fa-record-vinyl {
