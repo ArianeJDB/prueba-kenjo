@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/internal/operators';
 import { ArtistsProxyService } from './artists-proxy.service';
-import { Artists } from './models/artists.model';
-import { ArtistsDTO } from './models/artists-dto.model';
+import { Artists } from '../models/artists.model';
+import { ArtistsDTO } from '../models/artists-dto.model';
 
 @Injectable({
   providedIn: 'root'

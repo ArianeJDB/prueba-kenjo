@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Albums } from 'src/app/models/albums.model';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { AlbumsService } from 'src/app/albums.service';
+import { AlbumsService } from 'src/app/services/albums.service';
 import { Subscription } from 'rxjs';
-import { NotificationBusService } from 'src/app/notification-bus.service';
-import { ArtistsService } from 'src/app/artists.service';
-import { Artists } from 'src/app/models/artists.model';
+import { NotificationBusService } from 'src/app/services/notification-bus.service';
+import { ArtistsService } from 'src/app/services/artists.service';
+
 
 @Component({
   selector: 'app-album-detail',

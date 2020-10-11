@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/internal/operators';
 import { AlbumsProxyService } from './albums-proxy.service';
-import { Albums } from './models/albums.model';
-import { AlbumsDTO } from './models/albums-dto.model';
+import { Albums } from '../models/albums.model';
+import { AlbumsDTO } from '../models/albums-dto.model';
 
 
 @Injectable({

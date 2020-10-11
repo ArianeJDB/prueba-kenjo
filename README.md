@@ -1,38 +1,18 @@
-# PruebaKenjo
+Hi!
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
+This is the front of a code challenge which is connected to a docker server.
 
-## Development server
+You have to run npm install and then npm start to run the app.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The request by id of albums and artist are implemented but I'm not using them (except for the artist to connect it with the album) to avoid doing many requests to the server, so when I get all the data, its stored in the LocalStorage and then its filtered by id to get the detail.
 
-## Code scaffolding
+The styles are made for desktop resolution only. There wasn'r time enough to make it responsive.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
- 
-______________
-El proxy y el servicio para la petición de un album por el id (getAlbumById) está implementada, pero no se usa en el código, ya que para no hacer más peticiones al servidor, se han guardado todos los albums en el LocalStorage y poder acceder a ellos sin necesidad de hacer una petición al servidor. Por cuestiones de tiempo no pude implementar un store, por eso usé el LocalStorage
-
-La maqueta está hecha desktop first ya que por cuestiones de tiempo no me daba tiempo de hacerlo responsive, por lo que escogí maqueta solo a resolución de desktop
-
-Hacer npm install para instalarse PrimeNG
 
 I didnt have enought time to style the notification message, I only could change the backgound color to make it visible. I hope you can see it!
 
-I didnt have enough time to re use components and styles from albums module in artists module, so I re did the module with its components with the same logic.
+I also didnt have enough time to re use components and styles from albums module in artists module, so I re did the module with its components with the same logic.
+
+And this read me could be done in a better way, Im sorry!
+
+I hope you like it!

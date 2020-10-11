@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { ArtistsService } from 'src/app/artists.service';
+import { ArtistsService } from 'src/app/services/artists.service';
 import { Artists } from 'src/app/models/artists.model';
 
 @Component({
