@@ -12,10 +12,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  goToCreateAlbum() {
-    this.router.navigate(['albums/create-album']);
+  goToPage(page) {
+    this.router.navigate([page]);
   }
-  goToCreateArtist() {
-    this.router.navigate(['artists/create-artist']);
-  }
+
 }
