@@ -34,3 +34,5 @@ La maqueta está hecha desktop first ya que por cuestiones de tiempo no me daba 
 Hacer npm install para instalarse PrimeNG
 
 I didnt have enought time to style the notification message, I only could change the backgound color to make it visible. I hope you can see it!
+
+I didnt have enough time to re use components and styles from albums module in artists module, so I re did the module with its components with the same logic.

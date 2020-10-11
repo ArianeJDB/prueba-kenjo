@@ -22,6 +22,10 @@
       <label for="genre" class="hidden">Genre</label>
       <input type="genre" id="genre" formControlName="genre" placeholder="Genre" />
     </div>
+    <div class="field_container">
+      <label for="artistId" class="hidden">Artist Id</label>
+      <input type="text" id="artistId" formControlName="artistId" placeholder="Artist Id" />
+    </div>
     <button *ngIf="page === 'Create'" [disabled]="!form.valid" class="btn" type="button" label="Create"
       (click)="createNewAlbum()">Create</button>
     <button *ngIf="page === 'Edit'" [disabled]="!form.valid" class="btn" type="button" label="Edit"

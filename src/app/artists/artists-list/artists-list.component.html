@@ -4,7 +4,7 @@
         <div class="artist" (click)=goToDetail(artist._id)>
             <img [src]="artist.photoUrl" alt="pic of {{artist.name}}">
             <h2>{{artist.name}}</h2>
-            <span>{{artist.birthdate}}</span>
+            <span>{{artist.birthdate | date}}</span>
             <span>{{artist.deathDate}}</span>
         </div>
     </li>

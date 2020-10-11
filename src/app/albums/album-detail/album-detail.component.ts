@@ -4,6 +4,8 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AlbumsService } from 'src/app/albums.service';
 import { Subscription } from 'rxjs';
 import { NotificationBusService } from 'src/app/notification-bus.service';
+import { ArtistsService } from 'src/app/artists.service';
+import { Artists } from 'src/app/models/artists.model';
 
 @Component({
   selector: 'app-album-detail',
@@ -17,12 +19,15 @@ export class AlbumDetailComponent implements OnInit, OnDestroy {
   sub: Subscription;
   errorMsg: string;
   successMsg: string;
+  artistName: string;
+  artistId: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private service: AlbumsService,
     private router: Router,
-    private busService: NotificationBusService
+    private busService: NotificationBusService,
+    private artistService: ArtistsService
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +35,8 @@ export class AlbumDetailComponent implements OnInit, OnDestroy {
     this.id = this.activatedRoute.snapshot.params.id;
     this.filterAlbum();
     // this.getAlbumById(this.id)
+    this.getArtistName()
+
   }
 
   filterAlbum() {
@@ -62,7 +69,29 @@ export class AlbumDetailComponent implements OnInit, OnDestroy {
   goToEdit(id) {
     this.router.navigate(['albums/edit/' + id]);
   }
+
+  getArtistName() {
+    this.albumSelected.forEach(album => {
+      if (album.artistId) {
+        console.log('??', album.artistId)
+        this.artistService.getArtistById(album.artistId).subscribe(
+          (response) => {
+            this.artistName = response.name;
+            this.artistId = response._id;
+          },
+          (error) => console.log(error));
+      }
+    });
+  }
+  goToArtist() {
+    this.router.navigate(['artists/detail/' + this.artistId]);
+  }
   ngOnDestroy() {
     // this.sub.unsubscribe();
   }
 }
+
+
+
+
+
