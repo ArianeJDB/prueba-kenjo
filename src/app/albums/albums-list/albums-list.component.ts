@@ -30,23 +30,11 @@ export class AlbumsListComponent implements OnInit, OnDestroy {
       (error) => console.log(error)
     );
   }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
-
-
-
-
-
-
-
-
-
-
-
   goToDetail(id): any {
     this.router.navigate(['albums/detail/' + id]);
   }
 
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  } 
 }

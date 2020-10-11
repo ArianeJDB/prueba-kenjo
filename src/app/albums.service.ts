@@ -32,7 +32,14 @@ export class AlbumsService {
       })
     );
   }
-
+  getAlbumById(id): Observable<Albums> {
+    return this.proxy.getAlbumById(id).pipe(
+      map((album: Albums) => {
+        const newAlbum: Albums = album;
+        return newAlbum;
+      })
+    );
+  }
   createNewAlbum(payload): Observable<Albums> {
     return this.proxy.createNewAlbum(payload).pipe(
       map((album: Albums) => {
@@ -48,7 +55,7 @@ export class AlbumsService {
         const albumUpdated: Albums = album;
         return albumUpdated;
       })
-    )
+    );
   }
 
   deleteAlbum(id): Observable<Albums> {

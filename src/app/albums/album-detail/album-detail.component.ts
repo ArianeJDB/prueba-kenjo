@@ -13,7 +13,6 @@ import { NotificationBusService } from 'src/app/notification-bus.service';
 export class AlbumDetailComponent implements OnInit, OnDestroy {
   albums: Albums[];
   albumSelected: Albums[];
-  albumData: {};
   id: string;
   sub: Subscription;
   errorMsg: string;
@@ -30,12 +29,19 @@ export class AlbumDetailComponent implements OnInit, OnDestroy {
     this.albums = JSON.parse(localStorage.getItem('albums'));
     this.id = this.activatedRoute.snapshot.params.id;
     this.filterAlbum();
+    // this.getAlbumById(this.id)
   }
 
   filterAlbum() {
     this.albumSelected = this.albums.filter(album => album._id === this.id);
   }
 
+  getAlbumById(id) {
+    this.service.getAlbumById(id).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    );
+  }
   deleteAlbum(id) {
     try {
       this.service.deleteAlbum(id).subscribe(

@@ -16,6 +16,9 @@ getAlbumsList(): Observable<Albums[]> {
   return this.httpClient.get<Albums[]>(this.config + 'albums/all');
 }
 
+getAlbumById(id): Observable<Albums> {
+  return this.httpClient.get<Albums>(this.config + 'album/' + id);
+}
 createNewAlbum(payload): Observable<Albums> {
   return this.httpClient.post<Albums>(this.config + 'album', payload);
 }

@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AlbumsService } from 'src/app/albums.service';
-import { AppRoutingModule } from 'src/app/app-routing.module';
 import { Albums } from 'src/app/models/albums.model';
 import { NotificationBusService } from 'src/app/notification-bus.service';
 
@@ -40,11 +39,11 @@ export class CreateAlbumComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit(): void {
-    this.setPage()
+    this.setPage();
     this.form = new FormGroup({
       title: new FormControl(this.titleToEdit || '', [Validators.required]),
       coverUrl: new FormControl(this.coverUrlToEdit || '', [Validators.required]),
-      year: new FormControl(this.yearToEdit || null, [Validators.required]),
+      year: new FormControl(this.yearToEdit || null, [Validators.required, Validators.max(2020)]),
       genre: new FormControl(this.genreToEdit || '', [Validators.required]),
       artistId: new FormControl(this.artistIdToEdit || null)
     });
@@ -77,7 +76,7 @@ export class CreateAlbumComponent implements OnInit, OnDestroy {
   }
 
   editAlbum() {
-    this.sendToEdit.emit(this.form.value)
+    this.sendToEdit.emit(this.form.value);
   }
 
   ngOnDestroy() {

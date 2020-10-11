@@ -1,0 +1,18 @@
+<p>artist-detail works!</p>
+<div *ngFor="let data of artistSelected" class="album">
+    <img [src]="data.photoUrl" alt="{{data.photoUrl}}">
+    <h2>{{ data.name }}</h2>
+    <span>{{data.birthdate}}</span>
+    <span>{{data.deathDate}}</span>
+
+    <div class="icons-container">
+        <div class="icon-container edit" (click)="goToEdit(data._id)">
+            <i class="fas fa-undo"></i>
+            <span>Edit</span>
+        </div>
+        <div class="icon-container delete" (click)="deleteArtist(data._id)">
+            <i class="fas fa-skull-crossbones"></i>
+            <span>Delete</span>
+        </div>
+    </div>
+</div>
