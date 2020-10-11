@@ -1,0 +1,11 @@
+
+<ul>
+    <li *ngFor="let album of albums; let i = index">
+        <div class="album" (click)=goToDetail(album._id)>
+            <img [src]="album.coverUrl" alt="cover of {{album.title}} album">
+            <h2>{{album.title}}</h2>
+            <span>{{album.year}}</span>
+            <span>{{album.genre}}</span>
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,8 @@
+<app-create-album 
+    [titleToEdit]='title'
+    [coverUrlToEdit]='coverUrl'
+    [yearToEdit]='year'
+    [genreToEdit]='genre'
+    [artistIdToEdit]='artistId'
+    (sendToEdit)='editAlbum($event)'
+></app-create-album>
