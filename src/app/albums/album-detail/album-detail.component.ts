@@ -3,6 +3,7 @@ import { Albums } from 'src/app/models/albums.model';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AlbumsService } from 'src/app/albums.service';
 import { Subscription } from 'rxjs';
+import { NotificationBusService } from 'src/app/notification-bus.service';
 
 @Component({
   selector: 'app-album-detail',
@@ -15,17 +16,20 @@ export class AlbumDetailComponent implements OnInit, OnDestroy {
   albumData: {};
   id: string;
   sub: Subscription;
+  errorMsg: string;
+  successMsg: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private service: AlbumsService,
-    private router: Router
+    private router: Router,
+    private busService: NotificationBusService
   ) { }
 
   ngOnInit(): void {
     this.albums = JSON.parse(localStorage.getItem('albums'));
     this.id = this.activatedRoute.snapshot.params.id;
-    this.filterAlbum()
+    this.filterAlbum();
   }
 
   filterAlbum() {
@@ -33,17 +37,26 @@ export class AlbumDetailComponent implements OnInit, OnDestroy {
   }
 
   deleteAlbum(id) {
-    this.service.deleteAlbum(id).subscribe(
-      (response) => response,
-      (error) => console.log(error)
-    )
-    this.router.navigate(['/albums']);
+    try {
+      this.service.deleteAlbum(id).subscribe(
+        (response) => response,
+        (error) => console.log(error)
+      );
+      this.successMsg = 'The album was deleted!';
+      this.busService.showSuccess(this.successMsg, this.successMsg);
+      this.router.navigate(['/albums']);
+    } catch (error) {
+      if (error.status === 500) {
+        this.errorMsg = 'Oops! server error!';
+        this.busService.showError(this.errorMsg, this.errorMsg);
+      }
+    }
   }
 
   goToEdit(id) {
-    this.router.navigate(['albums/edit/' + id])
+    this.router.navigate(['albums/edit/' + id]);
   }
-  // ngOnDestroy() {
-  //   this.sub.unsubscribe();
-  // }
+  ngOnDestroy() {
+    // this.sub.unsubscribe();
+  }
 }

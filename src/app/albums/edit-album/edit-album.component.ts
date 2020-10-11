@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AlbumsService } from 'src/app/albums.service';
 import { Albums } from 'src/app/models/albums.model';
+import { NotificationBusService } from 'src/app/notification-bus.service';
 
 @Component({
   selector: 'app-edit-album',
@@ -20,24 +21,25 @@ export class EditAlbumComponent implements OnInit, OnDestroy {
   albumToEdit: Albums[];
   albumUpdated: Albums;
   sub: Subscription;
+  errorMsg: string;
+  successMsg: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private service: AlbumsService
+    private service: AlbumsService,
+    private busService: NotificationBusService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params.id;
     this.albums = JSON.parse(localStorage.getItem('albums'));
-    this.filterAlbum()
-
+    this.filterAlbum();
   }
-
 
   filterAlbum() {
     this.albumToEdit = this.albums.filter(album => album._id === this.id);
     this.getAlbumData()
-
   }
 
   getAlbumData() {
@@ -52,13 +54,23 @@ export class EditAlbumComponent implements OnInit, OnDestroy {
   }
 
   editAlbum(payload: Albums) {
-    console.log('edit', payload)
-    console.log('edit', this.id)
-
-    this.service.editAlbum(this.id, payload).subscribe(
-      (response) => this.albumUpdated = response,
-      (error) => console.log(error)
-    )
+    try {
+      this.service.editAlbum(this.id, payload).subscribe(
+        (response) => this.albumUpdated = response,
+        (error) => console.log(error)
+      )
+      this.successMsg = 'The album is updated!';
+      this.busService.showSuccess(this.successMsg, this.successMsg);
+      this.router.navigate(['/albums']);
+    } catch (error) {
+      if (error.status === 500) {
+        this.errorMsg = 'Oops! server error!';
+        this.busService.showError(this.errorMsg, this.errorMsg);
+      } else if (error.status === 400) {
+        this.errorMsg = 'Oops! you must fill all fields!';
+        this.busService.showError(this.errorMsg, this.errorMsg);
+      }
+    }
   }
 
   ngOnDestroy() {
